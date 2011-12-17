@@ -1,4 +1,8 @@
 FlipAndMatch::Application.routes.draw do
+  get "pages/app"
+  
+  root :to => "pages#app"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
