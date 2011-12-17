@@ -1,5 +1,5 @@
 FlipAndMatch::Application.routes.draw do
-  get "pages/app"
+  resources :pages
   
   root :to => "pages#app"
 
