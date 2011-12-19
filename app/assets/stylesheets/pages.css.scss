@@ -2,10 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table {
+div#game-wrapper{ position:relative; margin: 12px auto !important; width: 740px;}
+
+table { height: 520px;
 	
-	td{ padding: 10px;}
+	td { padding: 10px; height: 220px; width: 220px;}
 	
-	div {background-color: #f8f8f8; height: 40px; width: 40px;}
+	div {background-color: #f0f0f0; height: 200px; width: 200px; cursor:pointer; padding:20px;
+		 -webkit-border-radius: 4px !important; -moz-border-radius: 4px !important; border-radius: 3px;
+		 -webkit-box-shadow: 2px 2px 2px #A0A0A0 !important;
+		 -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+		 box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	
+		span{ position: relative; display: block; height: 100%; width: 100%; background-color: transparent; }
+		
+		.card-back{  background-image: url('Seamles-Blue-23.jpg') }
+		.moe{  background-image: url('moe200.png') }
+		.curly{  background-image: url('curly200.png'); background-repeat:no-repeat; }
+		.larry{  background-image: url('larry200.png'); background-repeat:no-repeat; }
+	}
+
+}
+
+#invitation{ height: 520px; 
+	span{ font-size: 1.5em;}
 
 }
