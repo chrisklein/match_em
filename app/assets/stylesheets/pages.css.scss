@@ -26,9 +26,16 @@
 	
 }
 
-#invitation{ position:relative; height: 210px; width: 350px; margin: auto !important; margin-top: 100px !important; overflow:auto;
+#invitation{ position:relative; margin: auto !important; margin-top: 100px !important; overflow:auto;
+			 -webkit-border-radius: 5px !important; -moz-border-radius: 5px !important; border-radius: 5px;
+			 background-color: #f0f0f0;
 	
-	span{ display: block; font-size: 1.5em;}
+	span{ display: block; height: 85px; font-size: 1.7em; margin: 30px 0px 0px 0px; padding: 15px; background-color: #ffffff;
+		  -webkit-border-radius: 5px !important; -moz-border-radius: 5px !important; border-radius: 5px; margin-top:25px;}
+	
+	.stoogies{ height: 150px; background-image: url('Stoogelogo.png'); background-repeat:no-repeat; margin: 30px 0px 0px 15px; 
+			   background-color: transparent;}
+	.button{font-size: 1.5em; padding-top: 15px; padding-bottom: 15px;}		
 
 }
 

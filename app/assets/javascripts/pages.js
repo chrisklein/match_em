@@ -106,7 +106,17 @@
 			},
 			
 		end_game: function(){
-			$('#cards-wrapper').empty().append('<div id="invitation"><span>Wow, you have a great memory!</span></div>')
+			var markup = '<div id="invitation">'
+						    + '<div class="six columns">'
+						 	   + '<span class="stoogies"></span>'
+						    + '</div>'
+						    + '<div class="six columns">'
+						 	   + '<span>We are very impressed!  We\'ve got more.</span>'
+							   + '<a href="#" class="full-width button">Join Us</a>'
+						     + '</div>'
+					   +'</div>'	
+					
+			$('#cards-wrapper').empty().append(markup)
 			}
 	});	
 	
