@@ -1,5 +1,5 @@
 (function(){
-	var FipGame, FlipGameController, Card, Deck, CardView
+	var FipGame, FlipGameController, Card, Deck, CardView, Data
 	
 	FlipGame = {
 		init: function(){
@@ -72,14 +72,7 @@
 			},	
 			
 		root: function(){
-			Deck = new Deck([
-				{name: 'moe',   flipped: false},
-				{name: 'larry', flipped: false},
-				{name: 'larry', flipped: false},
-				{name: 'curly', flipped: false},
-				{name: 'moe',   flipped: false},				
-				{name: 'curly', flipped: false}
-				])
+			Deck = new Deck( _.shuffle(Data) )
 			
 			$("td").each(function (i) {  
 				var card = Deck.at(i)
@@ -90,20 +83,41 @@
 			},
 			
 		check_count: function(){
-			if(FlipGame.flipped %2 == 0){ var t=setTimeout("FlipGame.Controller.check_match()",1000); }
+			if(FlipGame.flipped %2 == 0){ 
+				$('#cards-wrapper').append('<div id="mask"></div>')
+				var t=setTimeout("FlipGame.Controller.check_match()",1000); 
+				}
 			},
 			
 		check_match: function(){
 			var flipped_cards = Deck.filter(function(card){ return card.get('flipped') == true })
-			if(flipped_cards[0].get('name') == flipped_cards[1].get('name')){_(flipped_cards).each(function(card){ card.clear() }) }
-			else{ _(flipped_cards).each(function(card){ card.set({ 'flipped': false }); FlipGame.flipped = FlipGame.flipped - 1 }) }
-			if(Deck.all(function(card){ return _.isEmpty(card.attributes) })){ this.end_game() }
+			
+			if(flipped_cards[0].get('name') == flipped_cards[1].get('name')){
+				_(flipped_cards).each(function(card){ card.clear() }) 
+				}
+			else{ 
+				_(flipped_cards).each(function(card){ card.set({ 'flipped': false })
+				FlipGame.flipped = FlipGame.flipped - 1 }) 
+				}
+				
+			$('#mask').remove()
+			
+			if( Deck.all(function(card){ return _.isEmpty(card.attributes) }) ){ this.end_game() }
 			},
 			
 		end_game: function(){
-			$('#cards-wrapper').empty().append('<div id="invitation"><span>Wow, you have a geate memory!<span></div>')
+			$('#cards-wrapper').empty().append('<div id="invitation"><span>Wow, you have a great memory!<span></div>')
 			}
 	});	
+	
+	Data = [
+		{name: 'moe',   flipped: false},
+		{name: 'larry', flipped: false},
+		{name: 'larry', flipped: false},
+		{name: 'curly', flipped: false},
+		{name: 'moe',   flipped: false},				
+		{name: 'curly', flipped: false}
+	]
 	
 	
 }).call(this);	

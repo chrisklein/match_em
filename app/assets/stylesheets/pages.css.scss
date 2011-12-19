@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div#game-wrapper{ position:relative; margin: 12px auto !important; width: 740px;}
+div#game-wrapper{ position:relative; margin: 12px auto !important; width: 780px;}
 
 table { height: 520px;
 	
@@ -24,7 +24,13 @@ table { height: 520px;
 
 }
 
-#invitation{ height: 520px; 
+#invitation{ position:relative; height: 420px; width: 350px; margin: auto; padding-top: 100px;
 	span{ font-size: 1.5em;}
 
+}
+
+#mask{ position: absolute; left:0; top:50px;  height: 520px; width:780px; background-color: transparent;}
+
+#footer{position:relative; margin-top:30px;
+	b{ font-weight: 700; }
 }
