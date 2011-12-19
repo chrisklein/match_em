@@ -74,7 +74,7 @@
 		root: function(){
 			Deck = new Deck( _.shuffle(Data) )
 			
-			$("td").each(function (i) {  
+			$("#cards-wrapper").find(".four").each(function (i) { 
 				var card = Deck.at(i)
 				var card_view = new CardView({ model: card })     
 				$(this).append( card_view.render().el )       	
@@ -106,7 +106,7 @@
 			},
 			
 		end_game: function(){
-			$('#cards-wrapper').empty().append('<div id="invitation"><span>Wow, you have a great memory!<span></div>')
+			$('#cards-wrapper').empty().append('<div id="invitation"><span>Wow, you have a great memory!</span></div>')
 			}
 	});	
 	
