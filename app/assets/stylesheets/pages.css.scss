@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#game-wrapper{ position:relative; width: 780px !important; margin: 12px auto !important;}
+#game-wrapper{ margin-top: 12px !important;}
+
+.container{width: 780px !important;}
 
 #cards-wrapper{ position:relative; width: 780px !important;}
 
