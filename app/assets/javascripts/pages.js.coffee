@@ -31,34 +31,32 @@ CardView = Backbone.View.extend
 	
 	initialize: (options)->
 		_.bindAll(this, 'render')
-		this.model.bind('change', this.render)
+		@model.bind('change', @render)
 	
 	events:
 	 	'click': 'click'
 	
 	render: ->
-		$(this.el).empty()
-		if _.isEmpty this.model.attributes
-	      this.remove()
+		$(@el).empty()
+		if _.isEmpty @model.attributes
+	      @remove()
 		else
-		  if this.model.get 'flipped' then this.face_up() else this.face_down()
+		  if @model.get 'flipped' then @face_up() else @face_down()
 		
 		return this
 	
 	face_down: ->
-		$(this.el).append( "<span class='card-back'></span>" )
+		$(@el).append( "<span class='card-back'></span>" )
 		
 	face_up: ->
-		name = this.model.get 'name'
-		$(this.el).append( "<span class='#{name}'></span>" )
+		name = @model.get 'name'
+		$(@el).append( "<span class='#{name}'></span>" )
 	
 	click: ->
-		if !this.model.flipped
-		  this.model.set 'flipped': true
+		if !@model.get 'flipped'
+		  @model.set 'flipped': true
 		  ++FlipGame.flipped
-		
-		this.render()
-		FlipGame.Controller.check_count()
+		  FlipGame.Controller.check_count()
 
 
 #
@@ -76,7 +74,7 @@ FlipGameController = Backbone.Router.extend
     $('#cards-wrapper').find('.four').each (i)->
       card = Deck.at i
       card_view = new CardView model: card
-      $(this).append card_view.render().el      	
+      $(@).append card_view.render().el      	
   		
   check_count: ->
     if FlipGame.flipped %2 is 0
@@ -88,7 +86,7 @@ FlipGameController = Backbone.Router.extend
   		
  	  if flipped_cards[0].get('name') is flipped_cards[1].get('name')
  	    _(flipped_cards).each (card)-> card.clear() 
- 			
+
  	  else
  	    _(flipped_cards).each (card)-> 
  	      card.set 'flipped': false
@@ -96,10 +94,9 @@ FlipGameController = Backbone.Router.extend
  	
     $('#mask').remove()
     game_over = Deck.all (card)-> _.isEmpty card.attributes
-    if game_over then this.end_game()
+    if game_over then @end_game()
 
-  end_game: ->markup = '<div id="invitation"><div class="six columns"><span class="stoogies"></span></div><div class="six columns"><span>We are very impressed!  We\'ve got more.</span><a href="#" class="full-width button">Join Us</a></div></div>';$('#cards-wrapper').empty().append(markup)
-		
+  end_game: -> markup = '<div id="invitation"><div class="six columns"><span class="stoogies"></span></div><div class="six columns"><span>We\'re very impressed!  We\'ve got more.</span><a href="#" class="full-width button">Join Us</a></div></div>';$('#cards-wrapper').empty().append(markup)	
 
 Data = [
 	{name: 'moe',   flipped: false},
